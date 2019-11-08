@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import AnimatedNumber from "react-animated-number";
 
 // Components
-import Upgrades from "./Components/Upgrades";
+import Upgrades from "./Components/Upgrades/";
 
 import store from "./Store";
 import { observer } from "mobx-react";
