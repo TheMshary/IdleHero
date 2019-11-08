@@ -5,6 +5,7 @@ import AnimatedNumber from "react-animated-number";
 
 // Components
 import Upgrades from "./Components/Upgrades/";
+import WipeSave from "./Components/WipeSave";
 
 import store from "./Store";
 import { observer } from "mobx-react";
@@ -24,6 +25,7 @@ export default observer(
     render() {
       return (
         <div className="App">
+          <WipeSave />
           <AnimatedNumber
             component="p"
             value={store.counter}

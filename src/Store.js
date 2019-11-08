@@ -72,6 +72,29 @@ class StoreName {
       this.perSecond += upgrade.value;
     }
   };
+  wipeSave = () => {
+    this.counter = 0;
+    this.perSecond = 0;
+    this.perClick = 1;
+    this.perClickPrice = 10;
+    this.perSecondUpgrades = [
+      {
+        id: 1,
+        value: 100,
+        price: 1000,
+        label: "Per Second 1",
+        priceMultiplierPerPurchase: 1.35
+      },
+      {
+        id: 2,
+        value: 5000,
+        price: 25000,
+        label: "Per Second 2",
+        priceMultiplierPerPurchase: 1.35
+      }
+    ];
+    this.updateLocalStorage();
+  };
 }
 decorate(StoreName, {
   counter: observable,
