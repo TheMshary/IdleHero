@@ -1,9 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-export default function Upgrades(props) {
+import store from "../Store";
+import { observer } from "mobx-react";
+
+export default observer(props => {
   return (
     <div>
-      <Button onClick={() => props.purchaseCPC()}>CPC</Button>
+      {store.perClickPrice}
+      <Button onClick={() => store.purchaseCPC()}>CPC</Button>
     </div>
   );
-}
+});

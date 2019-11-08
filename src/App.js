@@ -1,26 +1,25 @@
 import React, { useState } from "react";
-
+import { decorate } from "mobx";
 import { Button } from "react-bootstrap";
 
 // Components
 import Upgrades from "./Components/Upgrades";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const [perClick, setPerClick] = useState(1);
+import store from "./Store";
+import { observer } from "mobx-react";
 
-  const purchaseCPC = () => {
-    setPerClick(perClick + 1);
-    setCounter(counter - 1);
-  };
-
+export default observer(() => {
   return (
     <div className="App">
-      {counter}
-      <Button onClick={() => setCounter(counter + perClick)}>vs</Button>
-      <Upgrades purchaseCPC={purchaseCPC} />
+      {store.counter}
+      <Button
+        onClick={() => {
+          store.counter += store.perClick;
+        }}
+      >
+        vs
+      </Button>
+      <Upgrades />
     </div>
   );
-}
-
-export default App;
+});
