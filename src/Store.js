@@ -1,9 +1,36 @@
 import { decorate, observable } from "mobx";
 
-class Todo {
+class StoreName {
+  rateOfUIChangePerSecondForCounter = 50;
   counter = 0;
+  perSecond = 0;
   perClick = 1;
   perClickPrice = 10;
+  perSecondUpgrades = [
+    {
+      value: 1,
+      price: 10,
+      label: "Per Second 1",
+      priceMultiplierPerPurchase: 1.35
+    }
+  ];
+
+  perSecondFunction = () => {
+    this.counter += this.perSecond / this.rateOfUIChangePerSecondForCounter;
+  };
+  timer = setInterval(
+    this.perSecondFunction,
+    1000 / this.rateOfUIChangePerSecondForCounter
+  );
+
+  toNumber(number, e) {
+    // console.log(this.state.notation)
+    return number > 999999 && this.notation
+      ? number.toExponential()
+      : number.toLocaleString(navigator.language, {
+          maximumFractionDigits: 0
+        });
+  }
 
   purchaseCPC = () => {
     if (this.counter >= this.perClickPrice) {
@@ -12,11 +39,22 @@ class Todo {
       this.perClickPrice = Math.round(this.perClickPrice * 1.35);
     }
   };
+  purchaseUpgrade = upgrade => {
+    if (this.counter >= upgrade.price) {
+      this.counter -= upgrade.price;
+      upgrade.price = Math.round(
+        upgrade.price * upgrade.priceMultiplierPerPurchase
+      );
+      this.perSecond += upgrade.value;
+    }
+  };
 }
-decorate(Todo, {
+decorate(StoreName, {
   counter: observable,
   perClick: observable,
-  perClickPrice: observable
+  perClickPrice: observable,
+  perSecondUpgrades: observable,
+  perSecond: observable
 });
 
-export default new Todo();
+export default new StoreName();
