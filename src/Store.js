@@ -8,9 +8,17 @@ class StoreName {
   perClickPrice = 10;
   perSecondUpgrades = [
     {
-      value: 1,
-      price: 10,
+      id: 1,
+      value: 100,
+      price: 1000,
       label: "Per Second 1",
+      priceMultiplierPerPurchase: 1.35
+    },
+    {
+      id: 2,
+      value: 50000,
+      price: 250000,
+      label: "Per Second 2",
       priceMultiplierPerPurchase: 1.35
     }
   ];

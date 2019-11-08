@@ -10,12 +10,14 @@ export default observer(props => {
       <Button onClick={() => store.purchaseUpgrade(upgrade)}>
         {upgrade.label}
       </Button>
+      +{upgrade.value}/s
     </div>
   ));
   return (
     <div>
       {store.perClickPrice}
       <Button onClick={() => store.purchaseCPC()}>CPC</Button>
+      +1/click
       {upgrades}
     </div>
   );
