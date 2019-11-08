@@ -16,8 +16,8 @@ class StoreName {
     },
     {
       id: 2,
-      value: 50000,
-      price: 250000,
+      value: 5000,
+      price: 25000,
       label: "Per Second 2",
       priceMultiplierPerPurchase: 1.35
     }
