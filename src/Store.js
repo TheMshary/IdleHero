@@ -23,6 +23,31 @@ class StoreName {
     }
   ];
 
+  updateLocalStorage = () => {
+    // This next line will stringify the data
+    let data = JSON.stringify({
+      counter: this.counter,
+      perSecond: this.perSecond,
+      perClick: this.perClick,
+      perClickPrice: this.perClickPrice,
+      perSecondUpgrades: this.perSecondUpgrades
+    });
+    localStorage.setItem("data", data);
+  };
+  // Update cookies every 5 seconds
+  cookiesTimer = setInterval(this.updateLocalStorage, 5000);
+
+  retrieveFromLocalStorage = () => {
+    const data = JSON.parse(localStorage.getItem("data"));
+    if (data) {
+      this.counter = data.counter;
+      this.perSecond = data.perSecond;
+      this.perClick = data.perClick;
+      this.perClickPrice = data.perClickPrice;
+      this.perSecondUpgrades = data.perSecondUpgrades;
+    }
+  };
+
   perSecondFunction = () => {
     this.counter += this.perSecond / this.rateOfUIChangePerSecondForCounter;
   };
@@ -30,15 +55,6 @@ class StoreName {
     this.perSecondFunction,
     1000 / this.rateOfUIChangePerSecondForCounter
   );
-
-  toNumber(number, e) {
-    // console.log(this.state.notation)
-    return number > 999999 && this.notation
-      ? number.toExponential()
-      : number.toLocaleString(navigator.language, {
-          maximumFractionDigits: 0
-        });
-  }
 
   purchaseCPC = () => {
     if (this.counter >= this.perClickPrice) {
