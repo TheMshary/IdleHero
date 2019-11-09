@@ -10,6 +10,15 @@ export default observer(props => {
   ));
   return (
     <div>
+      <Button
+        onClick={() => {
+          store.counter += store.perClick;
+        }}
+      >
+        CLICK
+      </Button>
+      You make {store.perClick} per click.
+      <br />
       {store.perClickPrice}
       <Button onClick={() => store.purchaseCPC()}>CPC</Button>
       +1/click
