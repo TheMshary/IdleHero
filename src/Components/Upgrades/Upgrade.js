@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import { Button } from "react-bootstrap";
+import { MDBBtn } from "mdbreact";
 import store from "../../Store";
 
 export default observer(props => {
@@ -9,9 +9,14 @@ export default observer(props => {
   return (
     <div>
       {upgrade.price}
-      <Button onClick={() => store.purchaseUpgrade(upgrade)}>
+      <MDBBtn
+        outline
+        color="primary"
+        size="sm"
+        onClick={() => store.purchaseUpgrade(upgrade)}
+      >
         {upgrade.label}
-      </Button>
+      </MDBBtn>
       +{upgrade.value}/s
     </div>
   );

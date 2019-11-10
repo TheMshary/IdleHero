@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { MDBBtn } from "mdbreact";
 import store from "../../Store";
 import { observer } from "mobx-react";
 import Upgrade from "./Upgrade";
@@ -10,17 +10,27 @@ export default observer(props => {
   ));
   return (
     <div>
-      <Button
+      <MDBBtn
+        outline
+        color="primary"
+        size="lg"
         onClick={() => {
           store.counter += store.perClick;
         }}
       >
         CLICK
-      </Button>
+      </MDBBtn>
       You make {store.perClick} per click.
       <br />
       {store.perClickPrice}
-      <Button onClick={() => store.purchaseCPC()}>CPC</Button>
+      <MDBBtn
+        outline
+        size="sm"
+        color="primary"
+        onClick={() => store.purchaseCPC()}
+      >
+        CPC
+      </MDBBtn>
       +1/click
       {upgrades}
     </div>
