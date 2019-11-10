@@ -14,7 +14,7 @@ export default observer(() => {
         });
   };
   return (
-    <div>
+    <div className="mx-auto">
       <AnimatedNumber
         component="p"
         value={store.counter}
